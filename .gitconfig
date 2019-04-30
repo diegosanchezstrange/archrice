@@ -1,0 +1,15 @@
+[user]
+	email = diegosanchezstrangejavax@gmail.com
+	name = diegosanchezstrange
+[color]
+    diff = auto
+    status = auto
+    ui = auto
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red
+	new = green
+[core]
+	editor = "vim"
