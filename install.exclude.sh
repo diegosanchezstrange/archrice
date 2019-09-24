@@ -26,7 +26,11 @@ while [[ ! $option =~ [nNsS] ]]; do
 
 	if [[ $option =~ [sS] ]]; then
 		echo -e "\e[32m==> Installing some useful staff\e[0m"
-		sudo pacman -S yay
+		mkdir ~/programs
+		git clone https://aur.archlinux.org/yay.git
+		mv yay ~/programs
+		cd ~/programs/yay
+		makepkg -si
 		yay -S firefox spotify steam telegram-desktop
 	elif [[ $option =~ [nN] ]]; then
 		echo -e "\e[31m==> Ok\e[0m"
