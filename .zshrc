@@ -8,7 +8,7 @@ ZSH_THEME="gallois"
 
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git)
+plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -28,5 +28,3 @@ alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 alias i3config="vim ~/.i3/config"
 alias Xres="vim ~/.Xresources"
-
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

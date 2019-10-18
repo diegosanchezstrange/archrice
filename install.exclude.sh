@@ -4,6 +4,11 @@ for file in $( ls -A | grep -vE '\.exclude*|\.git$|\.gitignore|.*.md' ); do
 	ln -sv "$PWD/$file" "$HOME" 2> /dev/null || echo -e "\e[31m$file already exists.\e[0m"
 done
 
+#Installing zsh and syntax highlighting
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+
 option="x"
 while [[ ! $option =~ [nNsS] ]]; do 
 	echo -en "\e[33m==> Do you want to install i3 realted programs? \e[0m"
