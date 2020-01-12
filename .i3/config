@@ -6,8 +6,8 @@ set $mod Mod4
 font pango:monospace 14
 
 #gaps config
-gaps inner 15
-gaps outer 15
+gaps inner 10
+gaps outer 10
 
 bindsym $mod+Ctrl+s			gaps inner current plus 5
 bindsym $mod+Shift+s 		gaps inner current minus 5
@@ -199,16 +199,16 @@ client.urgent 		$urgent-bg-color    $urgent-bg-color   $text-color 	    #00ff00
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-	colors{
-		focused_workspace  #4C7899 #285577 #FFFFFF
-		active_workspace   #333333 #222222 #FFFFFF
-		inactive_workspace #333333 #222222 #888888
-		urgent_workspace   #2F343A #900000 #FFFFFF
-		binding_mode       #2F343A #900000 #FFFFFF
-	}
-}
+#bar {
+        #status_command i3status
+	#colors{
+	#	focused_workspace  #4C7899 #285577 #FFFFFF
+	#	active_workspace   #333333 #222222 #FFFFFF
+	#	inactive_workspace #333333 #222222 #888888
+	#	urgent_workspace   #2F343A #900000 #FFFFFF
+	#	binding_mode       #2F343A #900000 #FFFFFF
+	#}
+#}
 
 bindsym $mod+Shift+x exec i3lock
 
@@ -216,6 +216,9 @@ bindsym $mod+Shift+x exec i3lock
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 -q set Master 2dB+ unmute
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 0 -q set Master 2db- unmute
 bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
+
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 
 exec --no-startup-id volumeicon
@@ -229,4 +232,5 @@ for_window [class="Nitrogen"] floating enable sticky enable border normal
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec compton -f
 
-
+#Make polybar start
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
