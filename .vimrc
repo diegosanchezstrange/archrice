@@ -8,17 +8,8 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'flazz/vim-colorschemes'
-Plug 'https://github.com/tomtom/tcomment_vim'
-Plug 'https://github.com/Valloric/YouCompleteMe'
-Plug 'mattn/emmet-vim'
 
 call plug#end()
-
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
-
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 
 set laststatus=2
 
