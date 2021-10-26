@@ -1,4 +1,4 @@
-" Automatic plug installation 
+" Automatic plug installation
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -8,15 +8,23 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'flazz/vim-colorschemes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
+
+nnoremap <silent> <C-f> :Files<CR>
 
 set laststatus=2
 
 set t_Co=256
 
-colorscheme 1989
- 
+colorscheme Atelier_EstuaryDark
+
+let g:airline#extensions#tabline#enabled = 1
+
 set number
 set relativenumber
 set tabstop=4
@@ -26,8 +34,3 @@ set colorcolumn=+1
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 highlight ColorColumn ctermbg=DarkRed
-
-map <Up> :echo "Estas usando vim pedazo de subnormal" <Cr>
-map <Down> :echo "Estas usando vim pedazo de subnormal" <CR>
-map <Left> :echo "Estas usando vim pedazo de subnormal" <CR>
-map <Right> :echo "Estas usando vim pedazo de subnormal" <CR>
