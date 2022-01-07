@@ -1,13 +1,48 @@
 #!/bin/bash
-echo -e "\e[32m==> Installing dotfiles...\e[0m"
-for file in $( ls -A | grep -vE '\.exclude*|\.git$|\.gitignore|.*.md' ); do
-	ln -sv "$PWD/$file" "$HOME" 2> /dev/null || echo -e "\e[31m$file already exists.\e[0m"
+
+installAllDotFiles ()
+{
+	echo -e "\e[32m==> Installing dotfiles...\e[0m"
+	for file in $( ls -A | grep -vE '\.exclude*|\.git$|\.gitignore|.*.md' ); do
+		ln -sv "$PWD/$file" "$HOME" 2> /dev/null || echo -e "\e[31m$file already exists.\e[0m"
+	done
+}
+
+installOhMyZsh ()
+{
+	#Installing zsh and syntax highlighting
+	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+}
+
+option="x"
+while [[ ! $option =~ [yYnN] ]]; do 
+	echo -en "\e[33m==> Do you want to install all the dotfiles? \e[0m"
+	read option
+
+	if [[ $option =~ [yY] ]]; then
+		installAllDotFiles
+	elif [[ $option =~ [nN] ]]; then
+		echo -e "\e[31m==> Ok\e[0m"
+	else 
+		echo -e "\e[31m==> I didn't get that.\e[0m"
+	fi
 done
 
-#Installing zsh and syntax highlighting
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+option="x"
+while [[ ! $option =~ [yYnN] ]]; do 
+	echo -en "\e[33m==> Do you want to install oh-my-zsh? \e[0m"
+	read option
 
+	if [[ $option =~ [yY] ]]; then
+		echo -e "\e[32m==> Installing oh-my-zsh\e[0m"
+		installOhMyZsh
+	elif [[ $option =~ [nN] ]]; then
+		echo -e "\e[31m==> Ok\e[0m"
+	else 
+		echo -e "\e[31m==> I didn't get that.\e[0m"
+	fi
+done
 
 option="x"
 while [[ ! $option =~ [nNsS] ]]; do 
