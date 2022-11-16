@@ -58,6 +58,7 @@ return packer.startup(function(use)
 	use 
     {
   		'nvim-lualine/lualine.nvim',
+        config = [[require('config.lualine')]],
   		requires = 
         { 
             'kyazdani42/nvim-web-devicons', 
@@ -79,6 +80,7 @@ return packer.startup(function(use)
         tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
 
+    -- Startin Dashboard
 	use 
     { 
         "glepnir/dashboard-nvim", 
@@ -86,6 +88,12 @@ return packer.startup(function(use)
         cond = firenvim_not_active,
         config = [[require('config.dashboard')]]
     }
+
+    -- fuzzy finding w/ telescope
+    use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
+    use({ "nvim-telescope/telescope.nvim", 
+        config = [[require('config.telescope')]],
+        branch = "0.1.x" }) -- fuzzy finder
 
     if packer_bootstrap then
         require("packer").sync()
