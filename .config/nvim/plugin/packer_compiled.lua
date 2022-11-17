@@ -80,10 +80,35 @@ _G.packer_plugins = {
     path = "/home/diego/.local/share/nvim/site/pack/packer/start/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
   },
+  LuaSnip = {
+    loaded = true,
+    path = "/home/diego/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    url = "https://github.com/L3MON4D3/LuaSnip"
+  },
   ReplaceWithRegister = {
     loaded = true,
     path = "/home/diego/.local/share/nvim/site/pack/packer/start/ReplaceWithRegister",
     url = "https://github.com/vim-scripts/ReplaceWithRegister"
+  },
+  ["cmp-buffer"] = {
+    loaded = true,
+    path = "/home/diego/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
+  },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "/home/diego/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  ["cmp-path"] = {
+    loaded = true,
+    path = "/home/diego/.local/share/nvim/site/pack/packer/start/cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
+  },
+  cmp_luasnip = {
+    loaded = true,
+    path = "/home/diego/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["dashboard-nvim"] = {
     config = { "require('config.dashboard')" },
@@ -93,11 +118,50 @@ _G.packer_plugins = {
     path = "/home/diego/.local/share/nvim/site/pack/packer/opt/dashboard-nvim",
     url = "https://github.com/glepnir/dashboard-nvim"
   },
+  ["friendly-snippets"] = {
+    loaded = true,
+    path = "/home/diego/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    url = "https://github.com/rafamadriz/friendly-snippets"
+  },
+  ["lspkind.nvim"] = {
+    loaded = true,
+    path = "/home/diego/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
+    url = "https://github.com/onsails/lspkind.nvim"
+  },
+  ["lspsaga.nvim"] = {
+    config = { "require('config.lsp.lspsaga')" },
+    loaded = true,
+    path = "/home/diego/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
+    url = "https://github.com/glepnir/lspsaga.nvim"
+  },
   ["lualine.nvim"] = {
     config = { "require('config.lualine')" },
     loaded = true,
     path = "/home/diego/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  ["mason-lspconfig.nvim"] = {
+    loaded = true,
+    path = "/home/diego/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["mason.nvim"] = {
+    config = { "require('config.lsp.mason')" },
+    loaded = true,
+    path = "/home/diego/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["nvim-cmp"] = {
+    config = { "require('config.nvim-cmp')" },
+    loaded = true,
+    path = "/home/diego/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-lspconfig"] = {
+    config = { "require('config.lsp.lspconfig')" },
+    loaded = true,
+    path = "/home/diego/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-tree.lua"] = {
     config = { "require('config.tree')" },
@@ -131,6 +195,11 @@ _G.packer_plugins = {
     path = "/home/diego/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["typescript.nvim"] = {
+    loaded = true,
+    path = "/home/diego/.local/share/nvim/site/pack/packer/start/typescript.nvim",
+    url = "https://github.com/jose-elias-alvarez/typescript.nvim"
+  },
   ["vim-maximizer"] = {
     loaded = true,
     path = "/home/diego/.local/share/nvim/site/pack/packer/start/vim-maximizer",
@@ -149,10 +218,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: lualine.nvim
-time([[Config for lualine.nvim]], true)
-require('config.lualine')
-time([[Config for lualine.nvim]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 require('config.telescope')
@@ -161,10 +226,30 @@ time([[Config for telescope.nvim]], false)
 time([[Config for Comment.nvim]], true)
 require('config.comments')
 time([[Config for Comment.nvim]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+require('config.lsp.lspconfig')
+time([[Config for nvim-lspconfig]], false)
+-- Config for: lspsaga.nvim
+time([[Config for lspsaga.nvim]], true)
+require('config.lsp.lspsaga')
+time([[Config for lspsaga.nvim]], false)
+-- Config for: mason.nvim
+time([[Config for mason.nvim]], true)
+require('config.lsp.mason')
+time([[Config for mason.nvim]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 require('config.tree')
 time([[Config for nvim-tree.lua]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+require('config.lualine')
+time([[Config for lualine.nvim]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+require('config.nvim-cmp')
+time([[Config for nvim-cmp]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
