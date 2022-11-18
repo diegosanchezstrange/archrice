@@ -125,8 +125,9 @@ return packer.startup(function(use)
         config = [[require('config.lsp.lspconfig')]]} -- easily configure language servers
 
   -- formatting & linting
-  -- use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
-  -- use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+  use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+  use{ "jose-elias-alvarez/null-ls.nvim",
+        config = [[require('config.lsp.null-ls')]] } -- configure formatters & linters
 
   -- treesitter configuration
   -- use({
