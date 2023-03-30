@@ -96,6 +96,7 @@ return packer.startup(function(use)
 	use("L3MON4D3/LuaSnip") -- snippet engine
 	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
 	use("rafamadriz/friendly-snippets") -- useful snippets
+	use("github/copilot.vim")
 
 	-- managing & installing lsp servers, linters & formatters
 	use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
@@ -128,6 +129,8 @@ return packer.startup(function(use)
 
 	-- git integration
 	use({ "lewis6991/gitsigns.nvim", config = [[require('config.gitsigns')]] }) -- show line modifications on left hand side
+
+	use("vimwiki/vimwiki")
 
 	if packer_bootstrap then
 		require("packer").sync()

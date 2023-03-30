@@ -47,6 +47,8 @@ end
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
+capabilities.offsetEncoding = "utf-8"
+
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = { "clangd", "html" }
