@@ -32,6 +32,7 @@ return packer.startup(function(use)
 
 	-- Lua functions for other plugins
 	use("nvim-lua/plenary.nvim")
+	use("nvim-lua/popup.nvim")
 
 	-- Colorscheme
 	use("bluz71/vim-nightfly-guicolors")
@@ -64,6 +65,8 @@ return packer.startup(function(use)
 	})
 
 	use("nvim-tree/nvim-web-devicons")
+
+	-- use("folke/neodev.nvim")
 
 	-- Nvim tree
 	use({
@@ -131,6 +134,13 @@ return packer.startup(function(use)
 	use({ "lewis6991/gitsigns.nvim", config = [[require('config.gitsigns')]] }) -- show line modifications on left hand side
 
 	use("vimwiki/vimwiki")
+
+	use({ "mfussenegger/nvim-dap", config = [[require('config.nvim-dap')]] })
+	use("theHamsta/nvim-dap-virtual-text")
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+	use({ "nvim-telescope/telescope-dap.nvim" })
+	use("rcarriga/cmp-dap")
+	-- use("hrsh7th/cmp-omni")
 
 	if packer_bootstrap then
 		require("packer").sync()

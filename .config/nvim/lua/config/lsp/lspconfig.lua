@@ -16,6 +16,11 @@ if not typescript_setup then
 	return
 end
 
+local status, neodev = pcall(require, "neodev")
+if not status then
+	return
+end
+
 local keymap = vim.keymap -- for conciseness
 
 -- enable keybinds only for when lsp server available
@@ -49,9 +54,9 @@ local capabilities = cmp_nvim_lsp.default_capabilities()
 
 capabilities.offsetEncoding = "utf-8"
 
+local servers = { "clangd", "html" }
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "clangd", "html" }
 for _, lsp in pairs(servers) do
 	lspconfig[lsp].setup({
 		on_attach = on_attach,
