@@ -25,6 +25,9 @@ colorscheme Atelier_EstuaryDark
 
 let g:airline#extensions#tabline#enabled = 1
 
+set visualbell
+set noerrorbells
+
 set number
 set relativenumber
 set tabstop=4
