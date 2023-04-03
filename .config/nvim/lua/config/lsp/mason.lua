@@ -46,6 +46,8 @@ mason_null_ls.setup({
 		"jq",
 		"pylint",
 		"cfn_lint",
+		"markdownlint",
+		"markdownlint-cli",
 	},
 	-- auto-install configured formatters & linters (with null-ls)
 	automatic_installation = true,

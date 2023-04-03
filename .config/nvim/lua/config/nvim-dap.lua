@@ -8,12 +8,10 @@ if not status then
 	return
 end
 
--- local status, dapui = pcall(require, "dapui")
--- if not status then
--- 	return
--- end
-
-nvim_dap_virtual_text.setup()
+local status, dapui = pcall(require, "dapui")
+if not status then
+	return
+end
 
 dap.adapters.lldb = {
 	type = "executable",
@@ -39,14 +37,40 @@ dap.configurations.cpp = {
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
 
+dapui.setup()
+nvim_dap_virtual_text.setup()
+
 vim.fn.sign_define("DapBreakpoint", { text = "🟥", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapBreakpointRejected", { text = "🟦", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapStopped", { text = "⭐️", texthl = "", linehl = "", numhl = "" })
 
--- vim.keymap.set("n", "<leader>dh", function()
--- 	require("dap").toggle_breakpoint()
--- end)
--- vim.keymap.set("n", "<leader>dH", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+vim.keymap.set("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>")
+vim.keymap.set("n", "<leader>B", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+vim.keymap.set("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
+vim.keymap.set("n", "<leader>dc", ":lua require'dap'.continue()<CR>")
+vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")
+vim.keymap.set("n", "<leader>dl", ":lua require'dap'.run_last()<CR>")
+vim.keymap.set("n", "<leader>do", ":lua require'dap'.step_over()<CR>")
+vim.keymap.set("n", "<leader>di", ":lua require'dap'.step_into()<CR>")
+vim.keymap.set("n", "<leader>dO", ":lua require'dap'.step_out()<CR>")
+vim.keymap.set("n", "<leader>dt", ":lua require'dap'.disconnect(); require'dap'.close()<CR>")
+vim.keymap.set("n", "<leader>dn", ":lua require'dap'.next()<CR>")
+-- run to cursor
+--vim.keymap.set("n", "<leader>dr", ":lua require'dap'.run_to_cursor()<CR>")
+-- clear breakpoints
+vim.keymap.set("n", "<leader>dbc", function()
+	require("dap").clear_breakpoints()
+end)
+
+vim.keymap.set("n", "<leader>ds", function()
+	require("dap").continue()
+	require("dapui").toggle()
+end)
+
+vim.keymap.set("n", "<leader>du", function()
+	require("dapui").toggle()
+end)
+
 -- vim.keymap.set({ "n", "t" }, "<A-k>", function()
 -- 	require("dap").step_out()
 -- end)
@@ -64,9 +88,6 @@ vim.fn.sign_define("DapStopped", { text = "⭐️", texthl = "", linehl = "", nu
 -- end)
 -- vim.keymap.set("n", "<leader>dc", function()
 -- 	require("dap").terminate()
--- end)
--- vim.keymap.set("n", "<leader>dR", function()
--- 	require("dap").clear_breakpoints()
 -- end)
 -- vim.keymap.set("n", "<leader>de", function()
 -- 	require("dap").set_exception_breakpoints({ "all" })

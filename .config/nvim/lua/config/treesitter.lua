@@ -24,6 +24,7 @@ treesitter.setup({
 		"html",
 		"css",
 		"markdown",
+		"markdown_inline",
 		"bash",
 		"lua",
 		"vim",
@@ -33,7 +34,6 @@ treesitter.setup({
 		"cpp",
 		"java",
 		"python",
-		"markdown",
 	},
 	-- auto install above language parsers
 	auto_install = true,

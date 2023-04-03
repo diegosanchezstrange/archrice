@@ -16,11 +16,6 @@ if not typescript_setup then
 	return
 end
 
-local status, neodev = pcall(require, "neodev")
-if not status then
-	return
-end
-
 local keymap = vim.keymap -- for conciseness
 
 -- enable keybinds only for when lsp server available

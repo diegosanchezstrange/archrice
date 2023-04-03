@@ -66,8 +66,6 @@ return packer.startup(function(use)
 
 	use("nvim-tree/nvim-web-devicons")
 
-	-- use("folke/neodev.nvim")
-
 	-- Nvim tree
 	use({
 		"nvim-tree/nvim-tree.lua",
