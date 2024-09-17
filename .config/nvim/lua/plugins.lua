@@ -110,9 +110,9 @@ return packer.startup(function(use)
 	use({ "glepnir/lspsaga.nvim", branch = "main", config = [[require('config.lsp.lspsaga')]] }) -- enhanced lsp uis
 	use({ "neovim/nvim-lspconfig", config = [[require('config.lsp.lspconfig')]] }) -- easily configure language servers
 
-	-- formatting & linting
-	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
-	use({ "jose-elias-alvarez/null-ls.nvim", config = [[require('config.lsp.null-ls')]] }) -- configure formatters & linters
+	-- -- formatting & linting
+	-- use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+	-- use({ "jose-elias-alvarez/null-ls.nvim", config = [[require('config.lsp.null-ls')]] }) -- configure formatters & linters
 
 	-- treesitter configuration
 	use({

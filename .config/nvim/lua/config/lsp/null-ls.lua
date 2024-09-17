@@ -19,6 +19,7 @@ null_ls.setup({
 		formatting.stylua, -- lua formatter
 		formatting.clang_format,
 		formatting.jq,
+		formatting.djlint,
 		-- formatting.alex,
 		-- formatting.pylint,
 		-- formatting.cfn_lint,

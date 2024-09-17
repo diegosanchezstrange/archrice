@@ -13,6 +13,7 @@ installAllDotFiles ()
 	for file in $( ls -A | grep -vE '\.exclude*|\.git$|\.gitignore|.*.md' ); do
 		ln -sv "$PWD/$file" "$HOME" 2> /dev/null || echo -e "\e[31m$file already exists.${DEFAULT}"
 	done
+	ln -sv "$PWD/.config/nvim" "$HOME/.config" 2> /dev/null || echo -e "\e[31m$file already exists.${DEFAULT}"
 }
 
 installOhMyZsh ()
