@@ -1,5 +1,5 @@
 ! urxvt.font: xft:monospace:size=16
-urxvt*font: xft:monospace:size=12,xft:hack:size=12,xft:Font\ Awesome:size=12
+urxvt*font: xft:monospace:size=10,xft:hack:size=10,xft:Font\ Awesome:size=10
 URxvt*iconFile:           /home/diego/wallpapers/archIconPng.png 
 ! urxvt.font: xft:monospace:size=16,xft:hack:size=16
 URxvt.scrollBar: false

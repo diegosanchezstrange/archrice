@@ -12,4 +12,12 @@
     old = red
 	new = green
 [core]
-	editor = "vim"
+    editor = "vim"
+    pager = "delta"
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
+    dark = true
+[merge]
+    conflictStyle = zdiff3

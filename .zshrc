@@ -5,9 +5,9 @@ ZSH_THEME="bira"
 
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git zsh-syntax-highlighting)
 
-bindkey '^ ' autosuggest-accept
+# bindkey '^ ' autosuggest-accept
 
 
 source $ZSH/oh-my-zsh.sh

@@ -73,7 +73,6 @@ return packer.startup(function(use)
 			"nvim-tree/nvim-web-devicons", -- optional, for file icons
 		},
 		config = [[require('config.tree')]],
-		tag = "nightly", -- optional, updated every week. (see issue #1193)
 	})
 
 	-- Startin Dashboard
@@ -111,8 +110,8 @@ return packer.startup(function(use)
 	use({ "neovim/nvim-lspconfig", config = [[require('config.lsp.lspconfig')]] }) -- easily configure language servers
 
 	-- -- formatting & linting
-	-- use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
-	-- use({ "jose-elias-alvarez/null-ls.nvim", config = [[require('config.lsp.null-ls')]] }) -- configure formatters & linters
+	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+	use({ "jose-elias-alvarez/null-ls.nvim", config = [[require('config.lsp.null-ls')]] }) -- configure formatters & linters
 
 	-- treesitter configuration
 	use({
@@ -139,6 +138,9 @@ return packer.startup(function(use)
 	use({ "nvim-telescope/telescope-dap.nvim" })
 	use("rcarriga/cmp-dap")
 	-- use("hrsh7th/cmp-omni")
+	--
+
+	use("mrcjkb/rustaceanvim")
 
 	if packer_bootstrap then
 		require("packer").sync()
