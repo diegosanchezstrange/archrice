@@ -13,7 +13,11 @@ installAllDotFiles ()
 	for file in $( ls -A | grep -vE '\.exclude*|\.git$|\.gitignore|.*.md' ); do
 		ln -sv "$PWD/$file" "$HOME" 2> /dev/null || echo -e "\e[31m$file already exists.${DEFAULT}"
 	done
-	ln -sv "$PWD/.config/nvim" "$HOME/.config" 2> /dev/null || echo -e "\e[31m$file already exists.${DEFAULT}"
+    echo -e "${YELLOW}==> Installing .config files...${DEFAULT}"
+    mkdir -p "$HOME/.config"
+    for file in $( ls -A .config | grep -vE '\.exclude*|\.git$|\.gitignore|.*.md' ); do
+        ln -sv "$PWD/.config/$file" "$HOME/.config" 2> /dev/null || echo -e "\e[31m$file already exists.${DEFAULT}"
+    done
 }
 
 installOhMyZsh ()
@@ -21,6 +25,11 @@ installOhMyZsh ()
 	sudo pacman -S zsh
 	#Installing zsh and syntax highlighting
 	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
+    # Setting zsh as default shell  
+    chsh -s $(which zsh)
+    # Remove the .zshrc created by oh-my-zsh and use the one from the repo
+    rm -f "$HOME/.zshrc"
+    mv $HOME/.zshrc.pre-oh-my-zsh $HOME/.zshrc
 }
 
 install42 ()
@@ -66,6 +75,10 @@ elif [[ ! "$machine" == "Linux" ]]; then
 elif [[ ! -f "/etc/arch-release" ]]; then
 	echo -e "${RED}==! Sorry this script is only for arch based distros."
 	exit
+else
+    echo -e "${YELLOW}==> This is an arch based distro${DEFAULT}"
+    sudo pacman -Syu --noconfirm
+    sudo pacman -S git curl wget vim zsh neovim --noconfirm
 fi
 	
 
@@ -119,7 +132,7 @@ while [[ ! $option =~ [nNyY] ]]; do
 	echo -en "${YELLOW}==> Do you want to install i3 realted programs? [Y/N]: ${DAFAULT}"
 	read option
 
-	if [[ $option =~ [sS] ]]; then
+	if [[ $option =~ [yY] ]]; then
 		echo -e "${YELLOW}==> Installing i3 related programs${DAFAULT}"
 		sudo pacman -S i3-gaps i3blocks i3lock i3status rofi ranger
 	elif [[ $option =~ [nN] ]]; then
@@ -131,17 +144,17 @@ done
 
 option="x"
 while [[ ! $option =~ [nNsS] ]]; do 
-	echo -en "${YELLOW}==> Do you want to install some useful staff? [Y/N]:${DAFAULT}" 
+	echo -en "${YELLOW}==> Do you want to install yay? [Y/N]:${DAFAULT}" 
 	read option
 
 	if [[ $option =~ [sS] ]]; then
-		echo -e "${YELLOW}==> Installing some useful staff${DAFAULT}"
+		echo -e "${YELLOW}==> Installing yay ${DAFAULT}"
 		mkdir ~/programs
 		git clone https://aur.archlinux.org/yay.git
 		mv yay ~/programs
 		cd ~/programs/yay
 		makepkg -si
-		yay -S firefox spotify steam telegram-desktop
+		yay -S spotify steam telegram-desktop
 	elif [[ $option =~ [nN] ]]; then
 		echo -e "${GREEN}==> Ok${DAFAULT}"
 	else 

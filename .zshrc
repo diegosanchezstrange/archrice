@@ -21,7 +21,7 @@ export PATH=/home/dsanchez/bin:$PATH
 export DOCKER_HOST=unix:///run/user/1000/docker.sock
 
 # Path Variables
-export TERM='xterm-256color'
+# export TERM='xterm-256color'
 export EDITOR='nvim'
 export VISUAL='nvim'
 

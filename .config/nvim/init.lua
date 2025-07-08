@@ -1,5 +1,2 @@
-require("plugins")
-require("options")
-require("keymaps")
-
-
+require("config.opt")
+require("config.lazy")

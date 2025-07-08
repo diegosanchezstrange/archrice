@@ -37,7 +37,8 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show run -theme DarkBlue
+# bindsym $mod+d exec rofi -show run -theme DarkBlue
+bindsym $mod+d exec --no-startup-id .config/rofi/launchers/type-2/launcher.sh
 
 #open ranger
 bindsym $mod+Ctrl+r exec urxvt -e ranger
