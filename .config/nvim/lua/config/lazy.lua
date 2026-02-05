@@ -25,6 +25,13 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
 	spec = {
 		-- import your plugins
+		{
+			"lukas-reineke/indent-blankline.nvim",
+			main = "ibl",
+			---@module "ibl"
+			---@type ibl.config
+			opts = {},
+		},
 		{ import = "plugins" },
 		{ import = "plugins.lsp" },
 
@@ -36,6 +43,9 @@ require("lazy").setup({
 	install = { colorscheme = { "habamax" } },
 	-- automatically check for plugin updates
 	checker = { enabled = true },
+	git = {
+		timeout = 200,
+	},
 })
 
 -- Set colorscheme after lazy.nvim is loaded_
