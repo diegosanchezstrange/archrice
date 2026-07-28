@@ -48,5 +48,5 @@ require("lazy").setup({
 	},
 })
 
--- Set colorscheme after lazy.nvim is loaded_
+-- Set colorscheme after lazy.nvim is loaded
 vim.cmd.colorscheme("catppuccin")

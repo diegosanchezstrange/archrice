@@ -12,11 +12,8 @@ plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR='mvim'
-
 export PATH="$HOME/.local/bin:$PATH"
-
-export PATH=/home/dsanchez/bin:$PATH
+export PATH="$HOME/bin:$PATH"
 
 export DOCKER_HOST=unix:///run/user/1000/docker.sock
 
@@ -35,3 +32,10 @@ alias i3config="vim ~/.i3/config"
 alias Xres="vim ~/.Xresources"
 alias vim=nvim
 alias nv=nvim
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# opencode
+export PATH="$HOME/.opencode/bin:$PATH"

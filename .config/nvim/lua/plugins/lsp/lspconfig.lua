@@ -17,8 +17,6 @@ return {
 		},
 	},
 	config = function()
-		local lspconfig = require("lspconfig")
-		local mason_lspconfig = require("mason-lspconfig")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 		local keymap = vim.keymap
@@ -47,10 +45,14 @@ return {
 				keymap.set("n", "<leader>d", "<cmd>Telescope diagnostics bufnr=0<cr>", opts)
 
 				opts.desc = "Go to Next Diagnostic"
-				keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+				keymap.set("n", "]d", function()
+					vim.diagnostic.jump({ count = 1 })
+				end, opts)
 
 				opts.desc = "Go to Previous Diagnostic"
-				keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+				keymap.set("n", "[d", function()
+					vim.diagnostic.jump({ count = -1 })
+				end, opts)
 
 				opts.desc = "Rename Symbol"
 				keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
@@ -69,14 +71,13 @@ return {
 
 		vim.diagnostic.config({
 			signs = {
-				active = true,
 				text = {
 					[vim.diagnostic.severity.ERROR] = " ",
 					[vim.diagnostic.severity.WARN] = " ",
 					[vim.diagnostic.severity.HINT] = "󰠠 ",
 					[vim.diagnostic.severity.INFO] = " ",
 				},
-				-- UNder line with squiggly line
+				-- Underline with squiggly line
 				-- linehl = {
 				-- 	[vim.diagnostic.severity.ERROR] = "DiagnosticUnderlineError",
 				-- 	[vim.diagnostic.severity.WARN] = "DiagnosticUnderlineWarn",
@@ -92,29 +93,36 @@ return {
 			},
 		})
 
-		mason_lspconfig.setup({
-			handlers = {
-				function(server_name)
-					lspconfig[server_name].setup({
-						capabilities = capabilities,
-					})
-				end,
-				["lua_ls"] = function()
-					lspconfig.lua_ls.setup({
-						capabilities = capabilities,
-						settings = {
-							Lua = {
-								diagnostics = {
-									globals = { "vim" },
-								},
-								completion = {
-									callSnippet = "Replace",
-								},
-							},
-						},
-					})
-				end,
+		local servers = {
+			"html",
+			"cssls",
+			"jsonls",
+			"pyright",
+			"clangd",
+			"bashls",
+			"gopls",
+			"dockerls",
+			"yamlls",
+		}
+
+		for _, server in ipairs(servers) do
+			vim.lsp.config(server, { capabilities = capabilities })
+			vim.lsp.enable(server)
+		end
+
+		vim.lsp.config("lua_ls", {
+			capabilities = capabilities,
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" },
+					},
+					completion = {
+						callSnippet = "Replace",
+					},
+				},
 			},
 		})
+		vim.lsp.enable("lua_ls")
 	end,
 }

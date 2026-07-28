@@ -9,18 +9,6 @@ return {
 				return vim.fn.executable("make") == 1
 			end,
 		},
-		{
-			"BurntSushi/ripgrep",
-			cond = function()
-				return vim.fn.executable("rg") == 1
-			end,
-		},
-		{
-			"sharkdp/fd",
-			cond = function()
-				return vim.fn.executable("fd") == 1
-			end,
-		},
 		"nvim-telescope/telescope-ui-select.nvim",
 	},
 	config = function()
@@ -57,7 +45,6 @@ return {
 		-- Keymaps for recent files
 		vim.keymap.set("n", "<leader>fr", function()
 			require("telescope.builtin").oldfiles({
-				cwd = vim.fn.stdpath("data") .. "/site",
 				prompt_title = "Recent files",
 			})
 		end, { desc = "Recent files" })
@@ -113,5 +100,8 @@ return {
 				},
 			},
 		})
+
+		pcall(require("telescope").load_extension, "fzf")
+		pcall(require("telescope").load_extension, "ui-select")
 	end,
 }

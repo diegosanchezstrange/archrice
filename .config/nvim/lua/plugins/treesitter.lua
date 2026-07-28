@@ -6,7 +6,7 @@ return {
 			ensure_installed = { "c", "cpp", "lua", "python", "rust", "javascript", "typescript" },
 			highlight = { enable = true },
 			indent = { enable = true },
-			autoinstall = true,
+			auto_install = true,
 		})
 	end,
 }

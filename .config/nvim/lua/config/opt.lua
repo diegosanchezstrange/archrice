@@ -11,7 +11,7 @@ opt.shiftwidth = 4
 opt.expandtab = true
 opt.autoindent = true
 
--- Max lenght
+-- Max length
 opt.textwidth = 80
 opt.colorcolumn = "80"
 

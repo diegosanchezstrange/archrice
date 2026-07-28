@@ -4,7 +4,6 @@ return
     dependencies = {
         "nvim-tree/nvim-web-devicons",
     },
-    --cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     keys = {
         { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "Toggle File Explorer" },
     },
@@ -23,20 +22,17 @@ return
             })
         end
     end,
-    config = function(_, opts)
-        require("nvim-tree").setup({
-            hijack_netrw = true,
-            --disable_netrw = true,
-            view = {
-                width = 30,
-                side = "left",
-            },
-            renderer = {
-                group_empty = true,
-            },
-            filters = {
-                dotfiles = false,
-            },
-        })
-    end,
+    opts = {
+        hijack_netrw = true,
+        view = {
+            width = 30,
+            side = "left",
+        },
+        renderer = {
+            group_empty = true,
+        },
+        filters = {
+            dotfiles = false,
+        },
+    },
 }
